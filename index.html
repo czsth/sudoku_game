@@ -11,7 +11,7 @@
 
         .sudoku_wrap {
             width: inherit;
-            height: 600px;
+            height: 400px;
         }
 
         .button_wrap {
@@ -31,7 +31,6 @@
         }
 
         .center-horizontal {
-
             margin-left: auto;
             margin-right: auto;
             left: 0;
@@ -39,33 +38,47 @@
         }
 
         #sudoku {
-            width: 590px;
-            height: 540px;
+            width: 360px;
+            height: 360px;
             list-style: none;
             position: static;
-            /* border-collapse: collapse; */
+            border-collapse: collapse;
+            border: 1px solid black;
+            font-family: 黑体;
         }
 
-        #sudoku li {
-            width: 60px;
-            height: 60px;
-            border: 1px solid #000;
-            float: left;
+        #sudoku td {
+            width: 40px;
+            height: 40px;
+            border: 1px solid black;
             text-align: center;
-            line-height: 60px;
-            font-size: 30px;
+            line-height: 40px;
+            font-size: 20px;
+            padding: 0;
+            margin: 0;
         }
 
         #sudoku input {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             border: 0px;
-            float: left;
             text-align: center;
-            line-height: 60px;
-            font-size: 30px;
+            line-height: 40px;
+            font-size: 20px;
             padding: 0px;
+            margin: 0;
             caret-color: transparent;
+        }
+
+        #sudoku .sudoku_cell {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 20px;
+            padding: 0;
+            border: 0;
+            margin: 0;
         }
 
         button {
@@ -82,98 +95,107 @@
     <p id="timer" style="text-align: center"></p>
     <div id="container">
         <div class="sudoku_wrap">
-            <ul id="sudoku" class="center">
-                <li x="0" y="0"></li>
-                <li x="0" y="1"></li>
-                <li x="0" y="2"></li>
-                <li x="0" y="3"></li>
-                <li x="0" y="4"></li>
-                <li x="0" y="5"></li>
-                <li x="0" y="6"></li>
-                <li x="0" y="7"></li>
-                <li x="0" y="8"></li>
-
-                <li x="1" y="0"></li>
-                <li x="1" y="1"></li>
-                <li x="1" y="2"></li>
-                <li x="1" y="3"></li>
-                <li x="1" y="4"></li>
-                <li x="1" y="5"></li>
-                <li x="1" y="6"></li>
-                <li x="1" y="7"></li>
-                <li x="1" y="8"></li>
-
-                <li x="2" y="0"></li>
-                <li x="2" y="1"></li>
-                <li x="2" y="2"></li>
-                <li x="2" y="3"></li>
-                <li x="2" y="4"></li>
-                <li id="test" x="2" y="5"></li>
-                <li x="2" y="6"></li>
-                <li x="2" y="7"></li>
-                <li x="2" y="8"></li>
-
-                <li x="3" y="0"></li>
-                <li x="3" y="1"></li>
-                <li x="3" y="2"></li>
-                <li x="3" y="3"></li>
-                <li x="3" y="4"></li>
-                <li x="3" y="5"></li>
-                <li x="3" y="6"></li>
-                <li x="3" y="7"></li>
-                <li x="3" y="8"></li>
-
-                <li x="4" y="0"></li>
-                <li x="4" y="1"></li>
-                <li x="4" y="2"></li>
-                <li x="4" y="3"></li>
-                <li x="4" y="4"></li>
-                <li x="4" y="5"></li>
-                <li x="4" y="6"></li>
-                <li x="4" y="7"></li>
-                <li x="4" y="8"></li>
-
-                <li x="5" y="0"></li>
-                <li x="5" y="1"></li>
-                <li x="5" y="2"></li>
-                <li x="5" y="3"></li>
-                <li x="5" y="4"></li>
-                <li x="5" y="5"></li>
-                <li x="5" y="6"></li>
-                <li x="5" y="7"></li>
-                <li x="5" y="8"></li>
-
-                <li x="6" y="0"></li>
-                <li x="6" y="1"></li>
-                <li x="6" y="2"></li>
-                <li x="6" y="3"></li>
-                <li x="6" y="4"></li>
-                <li x="6" y="5"></li>
-                <li x="6" y="6"></li>
-                <li x="6" y="7"></li>
-                <li x="6" y="8"></li>
-
-                <li x="7" y="0"></li>
-                <li x="7" y="1"></li>
-                <li x="7" y="2"></li>
-                <li x="7" y="3"></li>
-                <li x="7" y="4"></li>
-                <li x="7" y="5"></li>
-                <li x="7" y="6"></li>
-                <li x="7" y="7"></li>
-                <li x="7" y="8"></li>
-
-                <li x="8" y="0"></li>
-                <li x="8" y="1"></li>
-                <li x="8" y="2"></li>
-                <li x="8" y="3"></li>
-                <li x="8" y="4"></li>
-                <li x="8" y="5"></li>
-                <li x="8" y="6"></li>
-                <li x="8" y="7"></li>
-                <li x="8" y="8"></li>
-
-            </ul>
+            <table id="sudoku" class="center">
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </table>
         </div>
         <div id="difficulty" class="check_wrap center-horizontal">
             <input type="radio" name="difficulty" value="easy" onclick="easy()" checked>简单

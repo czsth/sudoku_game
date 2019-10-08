@@ -67,6 +67,8 @@ function check(i, j, x) {
   return checkRow(i, x) && checkColumn(j, x) && checkBlock(i, j, x);
 }
 
+// OK指填满了（在检查正确的基础上）
+
 function columnOK(col) {
   var sum = 0;
   for (var i = 0; i < 9; i++) {
@@ -175,12 +177,11 @@ function setBlockRandomly(n) {
  * 将游戏面板的 DOM Element 保存到一个数组里
  */
 function bindTable() {
-  var e = document.getElementById("sudoku").firstElementChild;
-  for (var i = 0; i < 9; i++) {
-    for (var j = 0; j < 9; j++) {
-      table[i].push(e);
-      e = e.nextElementSibling;
-    }
+  var tableObj = document.getElementById("sudoku");
+  for (var i = 0; i < tableObj.rows.length; i++) {    //遍历Table的所有Row
+      for (var j = 0; j < tableObj.rows[i].cells.length; j++) {   //遍历Row中的每一列
+          table[i].push(tableObj.rows[i].cells[j]);
+      }
   }
 }
 
@@ -191,7 +192,7 @@ function setTable(a) {
   for (var i = 0; i < 9; i++) {
     for (var j = 0; j < 9; j++) {
       if (a[i][j] !== 0) {
-        table[i][j].innerHTML = a[i][j];
+        table[i][j].innerHTML = '<div class="sudoku_cell">' + a[i][j] + '</div>';        
       } else {
         table[i][j].innerHTML = '<input type="text" maxlength="1" onchange="onInput(' + i + ',' + j + ');"/>';
       }
