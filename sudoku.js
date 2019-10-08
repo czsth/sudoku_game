@@ -179,9 +179,9 @@ function setBlockRandomly(n) {
 function bindTable() {
   var tableObj = document.getElementById("sudoku");
   for (var i = 0; i < tableObj.rows.length; i++) {    //遍历Table的所有Row
-      for (var j = 0; j < tableObj.rows[i].cells.length; j++) {   //遍历Row中的每一列
-          table[i].push(tableObj.rows[i].cells[j]);
-      }
+    for (var j = 0; j < tableObj.rows[i].cells.length; j++) {   //遍历Row中的每一列
+      table[i].push(tableObj.rows[i].cells[j]);
+    }
   }
 }
 
@@ -192,10 +192,18 @@ function setTable(a) {
   for (var i = 0; i < 9; i++) {
     for (var j = 0; j < 9; j++) {
       if (a[i][j] !== 0) {
-        table[i][j].innerHTML = '<div class="sudoku_cell">' + a[i][j] + '</div>';        
+        table[i][j].innerHTML = '<div class="sudoku_cell">' + a[i][j] + '</div>';
       } else {
         table[i][j].innerHTML = '<input type="text" maxlength="1" onchange="onInput(' + i + ',' + j + ');"/>';
       }
+    }
+  }
+}
+
+function clear(arr) {
+  for (var i = 0; i < 9; i++) {
+    for (var j = 0; j < 9; j++) {
+      arr[i][j] = 0;
     }
   }
 }
@@ -213,13 +221,6 @@ function createSudoku() {
   return success;
 }
 
-function clear(arr) {
-  for (var i = 0; i < 9; i++) {
-    for (var j = 0; j < 9; j++) {
-      arr[i][j] = 0;
-    }
-  }
-}
 
 /**
  * 复制一个 Numeric 型的二维数组
@@ -261,12 +262,39 @@ function disgust() {
 function change() {
   createGame();
   setTable(sudoku);
+  setChessboardColor("gainsboro");
 }
 // 查看答案
 function showAnswer() {
   setTable(answer);
   endTimer();
 }
+
+// 设9个分区颜色间隔地为color和白色
+function setChessboardColor(color) {
+  for (var i = 0; i < 9; ++i) {
+    for (var j = 0; j < 9; ++j) {
+      var isSilver = false;
+      if ((i < 3 || i > 5) && (j < 3 || j > 5)) {
+        // 第1、3、7、9区
+        isSilver = true;
+      }
+      if ((i > 2 && i < 6) && (j > 2 && j < 6)) {
+        // 第5区
+        isSilver = true;
+      }
+      if (isSilver) {
+        table[i][j].style.backgroundColor = color;
+        table[i][j].firstElementChild.style.backgroundColor = color;
+      }
+      else {
+        table[i][j].style.backgroundColor = "#ffffff";
+        table[i][j].firstElementChild.style.backgroundColor = "#ffffff";
+      }
+    }
+  }
+}
+
 // 处理输入
 function onInput(i, j) {
   var inputElement = table[i][j].firstElementChild;
@@ -298,7 +326,7 @@ function startTimer() {
   timeStart = new Date();
   countTime = true;
   count = 0;
-  timeArea.innerHTML =  "00 : 00 : 00";
+  timeArea.innerHTML = "00 : 00 : 00";
   timerId = setTimeout(timer, 1000);
   console.log(timerId);
 }
@@ -336,7 +364,7 @@ function gameStart() {
 function gameOver() {
   endTimer();
   var restart = confirm('Congratulations! You have finished this sudoku, click OK to start a new Game');
-  if(restart) {
+  if (restart) {
     gameStart();
   }
 }
