@@ -1,0 +1,82 @@
+#container {
+    display: block;
+}
+
+.sudoku_wrap {
+    width: inherit;
+    height: 400px;
+}
+
+.button_wrap {
+    width: 170px;
+    height: 100px;
+}
+
+.check_wrap {
+    width: 170px;
+    height: 50px;
+}
+
+.center {
+    position: absolute;
+    margin: auto;
+    border: 0;
+}
+
+.center-horizontal {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+#sudoku {
+    width: 360px;
+    height: 360px;
+    list-style: none;
+    position: static;
+    border-collapse: collapse;
+    border: 1px solid black;
+    font-family: 黑体;
+}
+
+#sudoku td {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+#sudoku input {
+    width: 40px;
+    height: 40px;
+    border: 0px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    padding: 0px;
+    margin: 0;
+    caret-color: transparent;
+}
+
+#sudoku .sudoku_cell {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+button {
+    width: 80px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 5px;
+}
