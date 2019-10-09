@@ -260,6 +260,7 @@ function disgust() {
 }
 // 换一个数独
 function change() {
+    document.getElementById("bd").style.backgroundImage = "none";
     createGame();
     setTable(sudoku);
     setChessboardColor("gainsboro");
@@ -363,10 +364,8 @@ function gameStart() {
 
 function gameOver() {
     endTimer();
-    var restart = confirm('Congratulations! You have finished this sudoku, click OK to start a new Game');
-    if (restart) {
-        gameStart();
-    }
+    setChessboardColor("#fff59d");
+    document.getElementById("bd").style.backgroundImage = 'url("./fireworks.svg")';
 }
 
 (function loading() {
